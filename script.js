@@ -348,61 +348,100 @@ function setupVirtualHug() {
 
   let hugTimer = null;
   let progress = 0;
-  const duration = 3000;
-  const step = 50;
+  let isEmbracing = false;
+  const duration = 1800; // 1.8 seconds smooth embrace
+  const step = 30;
 
-  function startHug(e) {
-    if (e.type === "touchstart") e.preventDefault();
-    hugPad.classList.add("pressing");
-    hugInstruction.textContent = "Hold tight... Sending warm embrace 💕";
+  function triggerHugEmbrace(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    if (isEmbracing) return;
+
+    isEmbracing = true;
     progress = 0;
+    hugPad.classList.add("pressing");
+    hugCircle.style.strokeDashoffset = `${totalLength}`;
+    hugInstruction.textContent = "Hold tight... Embracing you warmly across the miles 💕";
+    hugFeedback.style.display = "none";
 
     if (navigator.vibrate) navigator.vibrate([100, 50, 100, 50, 100]);
     playHeartbeatSound();
 
+    clearInterval(hugTimer);
     hugTimer = setInterval(() => {
       progress += step;
       const offset = totalLength - (progress / duration) * totalLength;
       hugCircle.style.strokeDashoffset = Math.max(0, offset);
 
-      if (progress % 800 < step) {
+      if (progress % 500 < step) {
         playHeartbeatSound();
-        if (navigator.vibrate) navigator.vibrate(80);
+        if (navigator.vibrate) navigator.vibrate(60);
       }
 
-      if (progress >= duration) completeHug();
+      if (progress >= duration) {
+        completeHug();
+      }
     }, step);
-  }
-
-  function stopHug() {
-    if (progress < duration) {
-      clearInterval(hugTimer);
-      hugPad.classList.remove("pressing");
-      hugCircle.style.strokeDashoffset = totalLength;
-      hugInstruction.textContent = "Press & Hold your thumb here";
-    }
   }
 
   function completeHug() {
     clearInterval(hugTimer);
+    hugCircle.style.strokeDashoffset = 0;
     hugPad.classList.remove("pressing");
-    hugPad.style.pointerEvents = "none";
-    hugInstruction.style.display = "none";
+    hugInstruction.textContent = "Tap again anytime you miss me 🫂❤️";
     hugFeedback.style.display = "block";
 
     playCelebrationJingle();
+    triggerContinuousHugCelebration();
 
-    if (window.confetti) {
-      window.confetti({ particleCount: 50, spread: 70, colors: ["#ff2e63", "#ff758c", "#ffd1dc"] });
-    }
+    if (navigator.vibrate) navigator.vibrate([200, 80, 200, 80, 400]);
 
-    if (navigator.vibrate) navigator.vibrate([200, 100, 400]);
+    setTimeout(() => {
+      isEmbracing = false;
+    }, 3000);
   }
 
-  hugPad.addEventListener("pointerdown", startHug);
-  window.addEventListener("pointerup", stopHug);
-  hugPad.addEventListener("touchstart", startHug);
-  window.addEventListener("touchend", stopHug);
+  function triggerContinuousHugCelebration() {
+    if (!window.confetti) return;
+
+    const end = Date.now() + 3500; // 3.5 seconds continuous celebration stream
+    const colors = ["#ff2e63", "#ff758c", "#ffd1dc", "#ffb703", "#ffffff", "#e60039"];
+
+    (function frame() {
+      // Left side fountain
+      window.confetti({
+        particleCount: 4,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.65 },
+        colors: colors
+      });
+      // Right side fountain
+      window.confetti({
+        particleCount: 4,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.65 },
+        colors: colors
+      });
+      // Center rain / sprinkle
+      window.confetti({
+        particleCount: 3,
+        spread: 90,
+        origin: { x: 0.5, y: 0.55 },
+        colors: colors
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  }
+
+  hugPad.addEventListener("click", triggerHugEmbrace);
+  hugPad.addEventListener("touchstart", triggerHugEmbrace, { passive: false });
 }
 
 // ==========================================
