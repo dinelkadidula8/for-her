@@ -346,91 +346,110 @@ function setupVirtualHug() {
   hugCircle.style.strokeDasharray = `${totalLength}`;
   hugCircle.style.strokeDashoffset = `${totalLength}`;
 
-  let hugTimer = null;
-  let progress = 0;
-  let isEmbracing = false;
-  const duration = 1800; // 1.8 seconds smooth embrace
-  const step = 30;
+  let holdTimer = null;
+  let holdProgress = 0;
+  let isHolding = false;
+  let hasCompletedHug = false;
+  const holdDuration = 2200; // 2.2 seconds true press & hold
+  const step = 25;
 
-  function triggerHugEmbrace(e) {
+  function startHold(e) {
     if (e) {
-      e.preventDefault();
-      e.stopPropagation();
+      if (e.cancelable) e.preventDefault();
     }
-    if (isEmbracing) return;
+    if (isHolding) return;
 
-    isEmbracing = true;
-    progress = 0;
+    isHolding = true;
+    hasCompletedHug = false;
+    holdProgress = 0;
+
     hugPad.classList.add("pressing");
     hugCircle.style.strokeDashoffset = `${totalLength}`;
-    hugInstruction.textContent = "Hold tight... Embracing you warmly across the miles 💕";
+    hugInstruction.textContent = "Keep holding... Embracing you warmly 💕";
     hugFeedback.style.display = "none";
 
-    if (navigator.vibrate) navigator.vibrate([100, 50, 100, 50, 100]);
+    if (navigator.vibrate) navigator.vibrate([80, 40, 80]);
     playHeartbeatSound();
 
-    clearInterval(hugTimer);
-    hugTimer = setInterval(() => {
-      progress += step;
-      const offset = totalLength - (progress / duration) * totalLength;
+    clearInterval(holdTimer);
+    holdTimer = setInterval(() => {
+      holdProgress += step;
+      const offset = totalLength - (holdProgress / holdDuration) * totalLength;
       hugCircle.style.strokeDashoffset = Math.max(0, offset);
 
-      if (progress % 500 < step) {
+      // Heartbeat pulse while holding
+      if (holdProgress % 550 < step) {
         playHeartbeatSound();
         if (navigator.vibrate) navigator.vibrate(60);
       }
 
-      if (progress >= duration) {
+      // Check if hold duration completed
+      if (holdProgress >= holdDuration) {
         completeHug();
       }
     }, step);
   }
 
+  function cancelHold(e) {
+    if (!isHolding || hasCompletedHug) return;
+
+    // Released thumb before completing
+    isHolding = false;
+    clearInterval(holdTimer);
+    hugPad.classList.remove("pressing");
+    hugCircle.style.strokeDashoffset = `${totalLength}`;
+    hugInstruction.textContent = "Hold your thumb here until the circle fills 🫂";
+  }
+
   function completeHug() {
-    clearInterval(hugTimer);
+    isHolding = false;
+    hasCompletedHug = true;
+    clearInterval(holdTimer);
+
     hugCircle.style.strokeDashoffset = 0;
     hugPad.classList.remove("pressing");
-    hugInstruction.textContent = "Tap again anytime you miss me 🫂❤️";
+    hugInstruction.textContent = "Hug delivered to your heart! ❤️ Hold again anytime";
     hugFeedback.style.display = "block";
 
     playCelebrationJingle();
     triggerContinuousHugCelebration();
 
-    if (navigator.vibrate) navigator.vibrate([200, 80, 200, 80, 400]);
+    if (navigator.vibrate) navigator.vibrate([100, 50, 200, 50, 400]);
 
+    // Allow holding again after 3 seconds
     setTimeout(() => {
-      isEmbracing = false;
+      hasCompletedHug = false;
     }, 3000);
   }
 
   function triggerContinuousHugCelebration() {
     if (!window.confetti) return;
 
-    const end = Date.now() + 3500; // 3.5 seconds continuous celebration stream
+    const end = Date.now() + 4000; // 4 seconds continuous celebration stream
     const colors = ["#ff2e63", "#ff758c", "#ffd1dc", "#ffb703", "#ffffff", "#e60039"];
 
     (function frame() {
-      // Left side fountain
+      // Left fountain
       window.confetti({
-        particleCount: 4,
+        particleCount: 5,
         angle: 60,
-        spread: 55,
-        origin: { x: 0, y: 0.65 },
+        spread: 60,
+        origin: { x: 0, y: 0.7 },
         colors: colors
       });
-      // Right side fountain
+      // Right fountain
+      window.confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 60,
+        origin: { x: 1, y: 0.7 },
+        colors: colors
+      });
+      // Center rain
       window.confetti({
         particleCount: 4,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1, y: 0.65 },
-        colors: colors
-      });
-      // Center rain / sprinkle
-      window.confetti({
-        particleCount: 3,
-        spread: 90,
-        origin: { x: 0.5, y: 0.55 },
+        spread: 100,
+        origin: { x: 0.5, y: 0.5 },
         colors: colors
       });
 
@@ -440,8 +459,43 @@ function setupVirtualHug() {
     })();
   }
 
-  hugPad.addEventListener("click", triggerHugEmbrace);
-  hugPad.addEventListener("touchstart", triggerHugEmbrace, { passive: false });
+  // Prevent mobile browser long-press context menu / magnifier
+  hugPad.addEventListener("contextmenu", (e) => e.preventDefault());
+
+  // Pointer events (handles modern mobile and desktop smoothly with pointer capture)
+  hugPad.addEventListener("pointerdown", (e) => {
+    if (hugPad.setPointerCapture && e.pointerId !== undefined) {
+      try { hugPad.setPointerCapture(e.pointerId); } catch (_) {}
+    }
+    startHold(e);
+  });
+
+  hugPad.addEventListener("pointerup", (e) => {
+    if (hugPad.releasePointerCapture && e.pointerId !== undefined) {
+      try { hugPad.releasePointerCapture(e.pointerId); } catch (_) {}
+    }
+    cancelHold(e);
+  });
+
+  hugPad.addEventListener("pointercancel", (e) => {
+    if (hugPad.releasePointerCapture && e.pointerId !== undefined) {
+      try { hugPad.releasePointerCapture(e.pointerId); } catch (_) {}
+    }
+    cancelHold(e);
+  });
+
+  // Touch fallback for older mobile devices
+  hugPad.addEventListener("touchstart", (e) => {
+    startHold(e);
+  }, { passive: false });
+
+  hugPad.addEventListener("touchend", (e) => {
+    cancelHold(e);
+  });
+
+  hugPad.addEventListener("touchcancel", (e) => {
+    cancelHold(e);
+  });
 }
 
 // ==========================================
