@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Happy Anniversary My Love! ❤️</title>
+  <!-- Google Fonts: Poppins, Caveat & Sacramento -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;600;700;800&family=Sacramento&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css?v=4" />
+</head>
+
+<body>
+  <!-- Ambient Floating Hearts Background -->
+  <div id="hearts-bg" class="hearts-bg"></div>
+
+  <!-- Music Toggle Floating Pill -->
+  <button id="musicToggle" class="music-toggle" title="Play Music On / Off">
+    <i class="fa-solid fa-music"></i>
+    <span id="musicLabel">Play Music: Off 🔇</span>
+  </button>
+
+  <!-- Background Music Audio: Piyath Rajapakse - Yali Hamuwenne Kedhinadha Api -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="yali-hamuwenne.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Voice Note Audio for Cassette Tape -->
+  <audio id="voiceNoteAudio" preload="auto">
+    <source src="voicenote.mp3" type="audio/mp3">
+    <source
+      src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c7ba286f.mp3?filename=tender-love-piano-10854.mp3"
+      type="audio/mp3">
+  </audio>
+
+  <!-- ============================================== -->
+  <!-- SCREEN 1: THE RUNAWAY "NO" BUTTON QUESTION     -->
+  <!-- ============================================== -->
+  <main id="gameScreen" class="screen-container active">
+    <div class="card glass-card game-card">
+      <div class="badge-pill">
+        <i class="fa-solid fa-heart-pulse"></i> A Very Important Question
+      </div>
+
+      <!-- Cute Animated Reaction GIF -->
+      <div class="gif-wrapper">
+        <img id="questionGif" src="https://media.giphy.com/media/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute Bear Asking" />
+      </div>
+
+      <!-- Edit the main question text here -->
+      <h1 class="main-title" id="mainQuestion">
+        Happy Anniversary, Babe! ✨
+      </h1>
+
+      <!-- Edit the subtitle under the question here -->
+      <p class="subtitle" id="subQuestion">
+        Will you stay with me, tolerate my silly jokes, and love me across the miles for another year? 🥺👉👈
+      </p>
+
+      <!-- Action Buttons Arena -->
+      <div class="buttons-arena" id="buttonArea">
+        <!-- YES Button: Expands when No is attempted -->
+        <button id="yesBtn" class="btn btn-yes">
+          <span class="btn-icon">💖</span>
+          <span class="btn-text">YES! Always & Forever!</span>
+        </button>
+
+        <!-- NO Button: Runs away dynamically on hover or touch -->
+        <button type="button" id="noBtn" class="btn btn-no">
+          <span class="btn-icon">🙈</span>
+          <span class="btn-text">No</span>
+        </button>
+      </div>
+
+      <p class="hint-text">
+        <i class="fa-regular fa-lightbulb"></i> Hint: There is only one correct choice here... 😉
+      </p>
+    </div>
+  </main>
+
+  <!-- ============================================== -->
+  <!-- "ARE YOU SURE?" LOOP POPUP                     -->
+  <!-- ============================================== -->
+  <div id="areYouSureOverlay" class="sure-overlay" style="display:none;">
+    <div class="sure-modal">
+      <div class="sure-gif-wrap">
+        <img id="sureGif" src="https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif" alt="sad" />
+      </div>
+      <!-- Edit the repeated "Are you sure?" loop text here -->
+      <p id="sureMessage" class="sure-message">Are you sure? 🥺</p>
+      <p id="sureSubMessage" class="sure-sub">Think carefully... 💔</p>
+      <div class="sure-buttons">
+        <button type="button" id="sureYesBtn" class="btn btn-yes sure-yes">
+          <span class="btn-icon">💖</span>
+          <span class="btn-text">Actually YES!</span>
+        </button>
+        <button type="button" id="sureNoBtn" class="btn btn-no sure-no">
+          <span class="btn-icon">😢</span>
+          <span class="btn-text">Still No...</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- SCREEN 2: THE LDR ANNIVERSARY SURPRISE REVEAL  -->
+  <!-- ============================================== -->
+  <section id="celebrationScreen" class="screen-container celebration-screen">
+    <div class="celebration-content">
+
+
+      <!-- Hero Celebration Header -->
+      <div class="card glass-card hero-card">
+        <div class="badge-pill celebration-badge">
+          🎉 YAAAY! I KNEW IT! 🥰
+        </div>
+
+        <div class="gif-wrapper hero-gif">
+          <img id="celebrateGif" src="https://media.giphy.com/media/gDfteqLchLcRTtjAD7/giphy.gif"
+            alt="Happy Celebration" />
+        </div>
+
+        <!-- Edit the celebration heading and subtitle here -->
+        <h1 class="celebrate-title">Happy Anniversary, My Sweetheart! 💖</h1>
+        <p class="celebrate-subtitle" id="coupleNamesTitle">Distance means so little when you mean so much ✨</p>
+
+        <!-- Live Love Ticker Counter -->
+        <div class="timer-box">
+          <div class="timer-heading">
+            <i class="fa-solid fa-clock-rotate-left"></i> Since October 3, 2025 — Us 💕
+          </div>
+          <div class="countdown-grid">
+            <div class="time-block">
+              <span class="time-number" id="daysCount">00</span>
+              <span class="time-label">Days</span>
+            </div>
+            <div class="time-divider">:</div>
+            <div class="time-block">
+              <span class="time-number" id="hoursCount">00</span>
+              <span class="time-label">Hours</span>
+            </div>
+            <div class="time-divider">:</div>
+            <div class="time-block">
+              <span class="time-number" id="minsCount">00</span>
+              <span class="time-label">Minutes</span>
+            </div>
+            <div class="time-divider">:</div>
+            <div class="time-block">
+              <span class="time-number" id="secsCount">00</span>
+              <span class="time-label">Seconds</span>
+            </div>
+          </div>
+          <div class="timer-footer" id="timerFooter">...and counting every second with love ♾️</div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- FEATURE: VIRTUAL HUG TOUCH & FEEL SIMULATOR   -->
+      <!-- ============================================ -->
+      <div class="section-container">
+        <div class="card glass-card hug-card">
+          <div class="section-header">
+            <h2 class="section-title"><i class="fa-solid fa-hands-holding-child"></i> Virtual Hug</h2>
+            <p class="section-desc">Whenever you miss me, press and hold below to receive a real-time warm hug 🫂</p>
+          </div>
+
+          <div class="hug-pad-wrapper">
+            <div class="hug-pad" id="hugPad">
+              <div class="hug-ripple" id="hugRipple"></div>
+              <div class="hug-heart"><i class="fa-solid fa-heart"></i></div>
+              <svg class="progress-ring" width="140" height="140">
+                <circle class="progress-ring-circle" stroke="#ff2e63" stroke-width="5" fill="transparent" r="62" cx="70"
+                  cy="70" />
+              </svg>
+            </div>
+            <span class="hug-instruction" id="hugInstruction">Press & Hold your thumb here</span>
+          </div>
+
+          <!-- Edit the virtual hug text here -->
+          <div class="hug-feedback" id="hugFeedback">
+            <div class="hug-feedback-icon">🥰</div>
+            <h3>Hug Delivered to Your Heart!</h3>
+            <p>Close your eyes. Imagine my arms wrapped tightly around you right now. You are never alone. ❤️</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- NEW FEATURE 1: MESSAGE IN A BOTTLE 🍾       -->
+      <!-- ============================================ -->
+      <div class="section-container">
+        <div class="card glass-card bottle-section-card">
+          <div class="section-header">
+            <h2 class="section-title"><i class="fa-solid fa-wine-bottle"></i> Message in a Bottle</h2>
+            <p class="section-desc">Carried across the oceans and miles just to reach you. Tap the bottle to unseal it!
+              📜🌊</p>
+          </div>
+
+          <div class="ocean-container">
+            <div class="ocean-waves"></div>
+            <!-- The Bobbing Bottle -->
+            <div class="bottle-wrapper" id="oceanBottle" title="Click to open secret message">
+              <div class="cork" id="bottleCork"></div>
+              <div class="bottle-glass">
+                <div class="rolled-scroll-inside">
+                  <div class="scroll-ribbon"></div>
+                </div>
+              </div>
+              <div class="bottle-sparkles">✨</div>
+            </div>
+          </div>
+          <span class="bottle-prompt-text"><i class="fa-solid fa-hand-pointer"></i> Tap the floating bottle to
+            open</span>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- NEW FEATURE 2: RETRO CASSETTE / VOICE NOTE 📼 -->
+      <!-- ============================================ -->
+      <div class="section-container">
+        <div class="card glass-card cassette-card">
+          <div class="section-header">
+            <h2 class="section-title"><i class="fa-solid fa-tape"></i> A Voice from My Heart</h2>
+            <p class="section-desc">Put your earphones on 🎧 Press play to hear my personal audio message across the
+              miles</p>
+          </div>
+
+          <!-- Realistic Retro Cassette Graphic -->
+          <div class="cassette-player">
+            <div class="cassette-body">
+              <div class="cassette-screws top-left"></div>
+              <div class="cassette-screws top-right"></div>
+              <div class="cassette-screws btm-left"></div>
+              <div class="cassette-screws btm-right"></div>
+
+              <!-- Label -->
+              <div class="cassette-label">
+                <div class="cassette-title">
+                  <span>MIX TAPE FOR MY BABE</span>
+                  <span class="tape-side">SIDE A • LDR EDITION</span>
+                </div>
+                <div class="tape-window">
+                  <div class="spool spool-left" id="spoolLeft">
+                    <div class="spool-gear"></div>
+                  </div>
+                  <div class="tape-ribbon-view"></div>
+                  <div class="spool spool-right" id="spoolRight">
+                    <div class="spool-gear"></div>
+                  </div>
+                </div>
+                <div class="cassette-subtitle">Track 01: "Words I Wish I Could Whisper in Your Ear"</div>
+              </div>
+            </div>
+
+            <!-- Cassette Controls -->
+            <div class="cassette-controls">
+              <button id="cassettePlayBtn" class="tape-btn">
+                <i class="fa-solid fa-play" id="playIcon"></i>
+                <span id="playBtnText">Play Voice Note</span>
+              </button>
+              <div class="audio-track-info">
+                <div class="audio-progress-bar">
+                  <div class="audio-progress-fill" id="audioProgress"></div>
+                </div>
+                <div class="audio-time-row">
+                  <span id="currentTime">0:00</span>
+                  <div class="equalizer-bars" id="eqBars">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                  <span id="totalTime">0:30</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- NEW FEATURE 4: FLOATING SKY LANTERNS 🏮     -->
+      <!-- ============================================ -->
+      <div class="section-container">
+        <div class="card glass-card lanterns-card">
+          <div class="section-header">
+            <h2 class="section-title"><i class="fa-solid fa-star"></i> Lanterns of Our Tomorrow</h2>
+            <p class="section-desc">Floating wishes into our night sky. Tap any glowing lantern to reveal our future
+              dream! 🏮✨</p>
+          </div>
+
+          <!-- Night Sky Lanterns Box -->
+          <div class="night-sky-box">
+            <div class="star-field"></div>
+
+            <div class="lantern" data-wish="1" style="left: 12%; animation-delay: 0s;">
+              <div class="lantern-light"></div>
+              <span class="lantern-num">1</span>
+            </div>
+
+            <div class="lantern" data-wish="2" style="left: 32%; animation-delay: 1.5s;">
+              <div class="lantern-light"></div>
+              <span class="lantern-num">2</span>
+            </div>
+
+            <div class="lantern" data-wish="3" style="left: 52%; animation-delay: 0.8s;">
+              <div class="lantern-light"></div>
+              <span class="lantern-num">3</span>
+            </div>
+
+            <div class="lantern" data-wish="4" style="left: 72%; animation-delay: 2.2s;">
+              <div class="lantern-light"></div>
+              <span class="lantern-num">4</span>
+            </div>
+
+            <div class="lantern" data-wish="5" style="left: 88%; animation-delay: 1.1s;">
+              <div class="lantern-light"></div>
+              <span class="lantern-num">5</span>
+            </div>
+          </div>
+
+          <!-- Active Wish Display Box -->
+          <!-- Edit the lantern wish box here -->
+          <div class="wish-reveal-box" id="wishRevealBox">
+            <div class="wish-badge"><i class="fa-solid fa-moon"></i> Our Shared Dream</div>
+            <h3 id="wishTitle">Tap a floating lantern above...</h3>
+            <p id="wishText">Each lantern carries a real wish for the day the distance is finally over forever.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- FEATURE: MYSTERY GOLD SCRATCH CARD           -->
+      <!-- ============================================ -->
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fa-solid fa-sparkles"></i> Secret Anniversary Mystery Card</h2>
+          <p class="section-desc">Rub / scratch the gold foil with your finger to reveal my secret promise to you! 🎫✨
+          </p>
+        </div>
+
+        <div class="scratch-card-container">
+          <div class="scratch-secret" id="scratchSecret">
+            <div class="secret-content">
+              <div class="secret-icon">✏️ 💌 ✨</div>
+              <!-- ✏️ SCRATCH CARD MESSAGE — Write your secret promise here! -->
+              <h3>MY PROMISE TO YOU</h3>
+              <p>
+                "Secret Card <3 " </p>
+                  <span class=" secret-badge">Didula ❤️</span>
+            </div>
+          </div>
+          <canvas id="scratchCanvas" width="460" height="230"></canvas>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- FEATURE: THE GLOWING LOVE JAR                -->
+      <!-- ============================================ -->
+      <div class="section-container">
+        <div class="card glass-card jar-card">
+          <div class="section-header">
+            <h2 class="section-title"><i class="fa-solid fa-jar"></i> The Little Love Jar</h2>
+            <p class="section-desc">A jar filled with little reasons why you have my entire heart 🫙✨</p>
+          </div>
+
+          <div class="jar-interactive-area">
+            <div class="jar-graphic" id="jarGraphic">
+              <div class="jar-lid"></div>
+              <div class="jar-glass">
+                <span class="jar-light l1">✨</span>
+                <span class="jar-light l2">💖</span>
+                <span class="jar-light l3">✨</span>
+                <span class="jar-light l4">💕</span>
+                <span class="jar-light l5">🌟</span>
+              </div>
+            </div>
+
+            <!-- Animated Note Display -->
+            <div class="drawn-note" id="drawnNote">
+              <p id="noteText">Tap the button below to pull a reason from the jar...</p>
+              <span class="note-signature" id="noteAuthor">From Me to You ❤️</span>
+            </div>
+
+            <button id="drawReasonBtn" class="btn btn-draw">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Pull a Reason Why I Love You
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- FEATURE: HANDWRITTEN LOVE LETTER             -->
+      <!-- ============================================ -->
+      <div class="section-container">
+        <div class="card glass-card letter-card">
+          <div class="wax-seal">
+            <i class="fa-solid fa-heart"></i>
+          </div>
+          <!-- ✏️ LETTER GREETING — Change "[ Her Name ]" to her real name -->
+          <h2 class="letter-greeting" id="letterGreeting">Dearest Aishu,</h2>
+          <!-- ✏️ LOVE LETTER BODY — Write your real letter here! -->
+          <div class="letter-body" id="letterBody">
+            <p>
+              1
+            </p>
+            <p>
+              2
+            </p>
+            <p>
+              3
+            </p>
+          </div>
+          <div class="letter-sign">
+            <span>Always and forever yours,</span>
+            <!-- ✏️ Change to your name -->
+            <strong id="letterSender">[ Your Name ] ❤️</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer & Shower Button -->
+      <footer class="celebration-footer">
+        <!-- ✏️ FOOTER MESSAGE — Change this small note at the bottom -->
+        <p>Made with all my ❤️ exclusively for you on our Anniversary.</p>
+        <button id="confettiShowerBtn" class="btn btn-shower">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Shower More Love!
+        </button>
+      </footer>
+
+    </div>
+  </section>
+
+  <!-- ============================================== -->
+  <!-- MODAL: UNROLLED PARCHMENT "MESSAGE IN A BOTTLE"-->
+  <!-- ============================================== -->
+  <div class="bottle-modal-backdrop" id="bottleModal">
+    <div class="parchment-scroll">
+      <button class="modal-close" id="bottleModalClose">&times;</button>
+      <div class="parchment-stamp">🌊 💌 🕊️</div>
+      <!-- ✏️ BOTTLE TITLE — change if you want -->
+      <h2 class="parchment-title">A Message Carried Across the Miles</h2>
+      <!-- ✏️ BOTTLE MESSAGE BODY — write your personal message here! -->
+      <div class="parchment-body">
+        <p>[ Greeting — e.g. "My Dearest,"]</p>
+        <p>1 paragraph </p>
+        <p>2 paragraph </p>
+        <p>5</p>
+      </div>
+      <div class="parchment-sign">
+        <!-- ✏️ Change the sign-off to your name -->
+        <span>Sealed with love across the miles,</span>
+        <strong>[ Your Name ] ❤️</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Script -->
+  <script src="script.js?v=3"></script>
+</body>
+
+</html>

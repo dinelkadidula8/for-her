@@ -1,0 +1,6 @@
+# Unused media
+*.m4a
+
+# OS files
+.DS_Store
+Thumbs.db
