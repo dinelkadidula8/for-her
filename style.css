@@ -1700,29 +1700,38 @@ body {
 }
 
 .parchment-body {
-  font-family: 'Caveat', cursive;
-  font-size: 1.45rem;
-  line-height: 1.7;
-  color: #ebdce3;
+  font-family: 'Lora', 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: #f7eef3;
   margin-bottom: 24px;
   max-height: 60vh;
   overflow-y: auto;
+  letter-spacing: 0.2px;
+}
+
+.parchment-body p {
+  margin-bottom: 12px;
 }
 
 .parchment-sign {
   border-top: 1px dashed rgba(255, 75, 114, 0.3);
   padding-top: 14px;
   text-align: right;
-  font-family: 'Caveat', cursive;
-  font-size: 1.35rem;
+  font-family: 'Lora', 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.05rem;
   color: #bda8b1;
   display: flex;
   flex-direction: column;
 }
 
 .parchment-sign strong {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #ff4b72;
+  font-style: normal;
+  margin-top: 4px;
 }
 
 /* ==========================================
