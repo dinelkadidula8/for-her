@@ -1563,14 +1563,15 @@ body {
 }
 
 .letter-body {
-  font-family: 'Playfair Display', 'Cormorant Garamond', 'Georgia', serif;
-  font-size: 1.12rem;
+  font-family: 'Lora', 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.08rem;
   line-height: 1.95;
   color: #f7eef3;
   display: flex;
   flex-direction: column;
   gap: 18px;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.25px;
   font-weight: 400;
 }
 
