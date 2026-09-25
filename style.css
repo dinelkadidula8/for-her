@@ -2,6 +2,14 @@
    LDR ROMANTIC ANNIVERSARY SURPRISE - STYLESHEET
    ============================================================ */
 
+@font-face {
+  font-family: 'deguland';
+  src: url('deguland.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --primary-pink: #ff4b72;
   --primary-rose: #ff2e63;
@@ -63,10 +71,23 @@ body {
 }
 
 @keyframes floatUp {
-  0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
-  15% { opacity: 0.8; }
-  90% { opacity: 0.8; }
-  100% { transform: translateY(-110vh) rotate(360deg) scale(1.3); opacity: 0; }
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  90% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(360deg) scale(1.3);
+    opacity: 0;
+  }
 }
 
 /* ==========================================
@@ -107,8 +128,15 @@ body {
 }
 
 @keyframes musicPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.04); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
 }
 
 /* ==========================================
@@ -175,8 +203,15 @@ body {
 }
 
 @keyframes cardEntrance {
-  0% { transform: scale(0.85) translateY(30px); opacity: 0; }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
+  0% {
+    transform: scale(0.85) translateY(30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }
 
 .gif-wrapper {
@@ -257,7 +292,9 @@ body {
   box-shadow: 0 14px 35px rgba(230, 0, 57, 0.75);
 }
 
-.btn-yes:active { transform: scale(0.98); }
+.btn-yes:active {
+  transform: scale(0.98);
+}
 
 /* NO BUTTON */
 .btn-no {
@@ -375,10 +412,25 @@ body {
 }
 
 @keyframes flyPlane {
-  0% { left: 0%; transform: rotate(45deg); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { left: 100%; transform: rotate(45deg); opacity: 0; }
+  0% {
+    left: 0%;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    transform: rotate(45deg);
+    opacity: 0;
+  }
 }
 
 .heart-pulse-marker {
@@ -389,8 +441,15 @@ body {
 }
 
 @keyframes markerBeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.3); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
 }
 
 .ldr-quote {
@@ -413,8 +472,15 @@ body {
 }
 
 @keyframes heroEntrance {
-  0% { transform: scale(0.9) translateY(40px); opacity: 0; }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
+  0% {
+    transform: scale(0.9) translateY(40px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }
 
 .celebration-badge {
@@ -550,8 +616,14 @@ body {
   margin-bottom: 6px;
 }
 
-.section-title i { color: var(--primary-rose); }
-.section-desc { font-size: 0.95rem; color: #bda8b1; }
+.section-title i {
+  color: var(--primary-rose);
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: #bda8b1;
+}
 
 /* ==========================================
    VIRTUAL HUG SIMULATOR
@@ -594,7 +666,8 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.hug-pad:active, .hug-pad.active {
+.hug-pad:active,
+.hug-pad.active {
   transform: scale(0.95);
   box-shadow: 0 6px 20px rgba(255, 46, 99, 0.5);
 }
@@ -607,8 +680,15 @@ body {
 }
 
 @keyframes heartPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
 }
 
 .progress-ring {
@@ -640,8 +720,15 @@ body {
 }
 
 @keyframes rippleRing {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(1.6); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
 }
 
 .hug-instruction {
@@ -664,13 +751,32 @@ body {
 }
 
 @keyframes popIn {
-  0% { transform: scale(0.85); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.hug-feedback-icon { font-size: 2.2rem; margin-bottom: 6px; }
-.hug-feedback h3 { color: #ff2e63; margin-bottom: 6px; }
-.hug-feedback p { font-size: 0.92rem; color: #d1bcc5; line-height: 1.4; }
+.hug-feedback-icon {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+}
+
+.hug-feedback h3 {
+  color: #ff2e63;
+  margin-bottom: 6px;
+}
+
+.hug-feedback p {
+  font-size: 0.92rem;
+  color: #d1bcc5;
+  line-height: 1.4;
+}
 
 /* ==========================================
    FEATURE 1: MESSAGE IN A BOTTLE 🍾
@@ -711,8 +817,13 @@ body {
 }
 
 @keyframes waveMove {
-  0% { transform: translateX(0) scaleY(1); }
-  100% { transform: translateX(-20%) scaleY(1.3); }
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+
+  100% {
+    transform: translateX(-20%) scaleY(1.3);
+  }
 }
 
 .bottle-wrapper {
@@ -730,8 +841,15 @@ body {
 }
 
 @keyframes bottleBob {
-  0%, 100% { transform: translateY(0) rotate(-10deg); }
-  50% { transform: translateY(-14px) rotate(8deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-10deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(8deg);
+  }
 }
 
 .cork {
@@ -740,7 +858,7 @@ body {
   background: #b08968;
   border-radius: 4px 4px 1px 1px;
   margin: 0 auto;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: transform 0.4s ease;
 }
 
@@ -764,7 +882,7 @@ body {
   background: #fefae0;
   border: 1px solid #dda15e;
   border-radius: 6px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
   position: relative;
 }
 
@@ -787,8 +905,17 @@ body {
 }
 
 @keyframes sparkleTwinkle {
-  0%, 100% { opacity: 0.3; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 .bottle-prompt-text {
@@ -840,13 +967,28 @@ body {
   height: 10px;
   border-radius: 50%;
   background: #8d99ae;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.top-left { top: 12px; left: 12px; }
-.top-right { top: 12px; right: 12px; }
-.btm-left { bottom: 12px; left: 12px; }
-.btm-right { bottom: 12px; right: 12px; }
+.top-left {
+  top: 12px;
+  left: 12px;
+}
+
+.top-right {
+  top: 12px;
+  right: 12px;
+}
+
+.btm-left {
+  bottom: 12px;
+  left: 12px;
+}
+
+.btm-right {
+  bottom: 12px;
+  right: 12px;
+}
 
 .cassette-label {
   width: 90%;
@@ -914,8 +1056,13 @@ body {
 }
 
 @keyframes spoolSpin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .tape-ribbon-view {
@@ -1009,15 +1156,34 @@ body {
   transition: height 0.2s ease;
 }
 
-.cassette-player.playing .equalizer-bars span:nth-child(1) { animation: eqJump 0.6s infinite ease-in-out alternate; }
-.cassette-player.playing .equalizer-bars span:nth-child(2) { animation: eqJump 0.8s infinite ease-in-out alternate 0.2s; }
-.cassette-player.playing .equalizer-bars span:nth-child(3) { animation: eqJump 0.5s infinite ease-in-out alternate 0.4s; }
-.cassette-player.playing .equalizer-bars span:nth-child(4) { animation: eqJump 0.9s infinite ease-in-out alternate 0.1s; }
-.cassette-player.playing .equalizer-bars span:nth-child(5) { animation: eqJump 0.7s infinite ease-in-out alternate 0.3s; }
+.cassette-player.playing .equalizer-bars span:nth-child(1) {
+  animation: eqJump 0.6s infinite ease-in-out alternate;
+}
+
+.cassette-player.playing .equalizer-bars span:nth-child(2) {
+  animation: eqJump 0.8s infinite ease-in-out alternate 0.2s;
+}
+
+.cassette-player.playing .equalizer-bars span:nth-child(3) {
+  animation: eqJump 0.5s infinite ease-in-out alternate 0.4s;
+}
+
+.cassette-player.playing .equalizer-bars span:nth-child(4) {
+  animation: eqJump 0.9s infinite ease-in-out alternate 0.1s;
+}
+
+.cassette-player.playing .equalizer-bars span:nth-child(5) {
+  animation: eqJump 0.7s infinite ease-in-out alternate 0.3s;
+}
 
 @keyframes eqJump {
-  0% { height: 4px; }
-  100% { height: 16px; }
+  0% {
+    height: 4px;
+  }
+
+  100% {
+    height: 16px;
+  }
 }
 
 /* ==========================================
@@ -1050,9 +1216,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     radial-gradient(white 1px, transparent 1px),
-    radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px);
+    radial-gradient(rgba(255, 255, 255, 0.7) 1px, transparent 1px);
   background-size: 50px 50px, 90px 90px;
   background-position: 0 0, 25px 25px;
   opacity: 0.6;
@@ -1088,10 +1254,23 @@ body {
 }
 
 @keyframes floatLantern {
-  0% { transform: translateY(0) rotate(-4deg); opacity: 0; }
-  15% { opacity: 1; }
-  85% { opacity: 1; }
-  100% { transform: translateY(-290px) rotate(4deg); opacity: 0; }
+  0% {
+    transform: translateY(0) rotate(-4deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-290px) rotate(4deg);
+    opacity: 0;
+  }
 }
 
 .wish-reveal-box {
@@ -1169,7 +1348,9 @@ body {
   gap: 8px;
 }
 
-.secret-icon { font-size: 1.8rem; }
+.secret-icon {
+  font-size: 1.8rem;
+}
 
 .secret-content h3 {
   font-size: 1.05rem;
@@ -1239,7 +1420,7 @@ body {
   background: #b08968;
   border-radius: 8px 8px 3px 3px;
   margin: 0 auto;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 .jar-glass {
@@ -1258,15 +1439,46 @@ body {
   animation: floatFirefly 3s infinite ease-in-out alternate;
 }
 
-.l1 { top: 20%; left: 20%; animation-delay: 0s; }
-.l2 { top: 60%; left: 40%; animation-delay: 0.6s; }
-.l3 { top: 30%; left: 70%; animation-delay: 1.2s; }
-.l4 { top: 70%; left: 65%; animation-delay: 1.8s; }
-.l5 { top: 45%; left: 25%; animation-delay: 2.2s; }
+.l1 {
+  top: 20%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.l2 {
+  top: 60%;
+  left: 40%;
+  animation-delay: 0.6s;
+}
+
+.l3 {
+  top: 30%;
+  left: 70%;
+  animation-delay: 1.2s;
+}
+
+.l4 {
+  top: 70%;
+  left: 65%;
+  animation-delay: 1.8s;
+}
+
+.l5 {
+  top: 45%;
+  left: 25%;
+  animation-delay: 2.2s;
+}
 
 @keyframes floatFirefly {
-  0% { transform: translateY(0) scale(0.9); opacity: 0.4; }
-  100% { transform: translateY(-10px) scale(1.2); opacity: 1; }
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translateY(-10px) scale(1.2);
+    opacity: 1;
+  }
 }
 
 .drawn-note {
@@ -1351,13 +1563,15 @@ body {
 }
 
 .letter-body {
-  font-family: 'Caveat', cursive;
-  font-size: 1.45rem;
-  line-height: 1.7;
-  color: #edd9e2;
+  font-family: 'Playfair Display', 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 1.12rem;
+  line-height: 1.95;
+  color: #f7eef3;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
+  letter-spacing: 0.3px;
+  font-weight: 400;
 }
 
 .letter-sign {
@@ -1441,8 +1655,15 @@ body {
 }
 
 @keyframes parchmentUnfold {
-  0% { transform: scale(0.7) rotate(-3deg); opacity: 0; }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  0% {
+    transform: scale(0.7) rotate(-3deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 .modal-close {
@@ -1457,7 +1678,9 @@ body {
   line-height: 1;
 }
 
-.modal-close:hover { color: #ff2e63; }
+.modal-close:hover {
+  color: #ff2e63;
+}
 
 .parchment-stamp {
   font-size: 1.8rem;
@@ -1503,30 +1726,108 @@ body {
    RESPONSIVE DESIGN (MOBILE FRIENDLY)
    ========================================== */
 @media (max-width: 600px) {
-  .game-card { padding: 28px 20px; }
-  .main-title { font-size: 1.55rem; }
-  .subtitle { font-size: 0.95rem; }
-  .gif-wrapper { width: 150px; height: 150px; }
-  .buttons-arena { min-height: 80px; gap: 14px; }
-  .btn-yes { padding: 14px 28px; font-size: 1.05rem; }
-  .btn-no { padding: 12px 22px; font-size: 0.95rem; }
-  .celebrate-title { font-size: 1.75rem; }
-  .celebrate-subtitle { font-size: 1.75rem; }
-  .countdown-grid { gap: 6px; }
-  .time-block { min-width: 64px; padding: 10px 8px; }
-  .time-number { font-size: 1.5rem; }
-  .time-divider { font-size: 1.3rem; }
-  .letter-card { padding: 30px 20px; }
-  .wax-seal { right: 20px; }
-  .letter-greeting { font-size: 1.9rem; }
-  .letter-body { font-size: 1.25rem; }
-  .scratch-card-container { height: 210px; }
-  .secret-content h3 { font-size: 0.95rem; }
-  .secret-content p { font-size: 0.8rem; }
-  .night-sky-box { height: 200px; }
-  .cassette-body { height: 190px; }
-  .tape-window { height: 55px; }
-  .spool { width: 38px; height: 38px; }
+  .game-card {
+    padding: 28px 20px;
+  }
+
+  .main-title {
+    font-size: 1.55rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .gif-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+
+  .buttons-arena {
+    min-height: 80px;
+    gap: 14px;
+  }
+
+  .btn-yes {
+    padding: 14px 28px;
+    font-size: 1.05rem;
+  }
+
+  .btn-no {
+    padding: 12px 22px;
+    font-size: 0.95rem;
+  }
+
+  .celebrate-title {
+    font-size: 1.75rem;
+  }
+
+  .celebrate-subtitle {
+    font-size: 1.75rem;
+  }
+
+  .countdown-grid {
+    gap: 6px;
+  }
+
+  .time-block {
+    min-width: 64px;
+    padding: 10px 8px;
+  }
+
+  .time-number {
+    font-size: 1.5rem;
+  }
+
+  .time-divider {
+    font-size: 1.3rem;
+  }
+
+  .letter-card {
+    padding: 30px 20px;
+  }
+
+  .wax-seal {
+    right: 20px;
+  }
+
+  .letter-greeting {
+    font-size: 1.9rem;
+  }
+
+  .letter-body {
+    font-size: 1.02rem;
+    line-height: 1.85;
+  }
+
+  .scratch-card-container {
+    height: 210px;
+  }
+
+  .secret-content h3 {
+    font-size: 0.95rem;
+  }
+
+  .secret-content p {
+    font-size: 0.8rem;
+  }
+
+  .night-sky-box {
+    height: 200px;
+  }
+
+  .cassette-body {
+    height: 190px;
+  }
+
+  .tape-window {
+    height: 55px;
+  }
+
+  .spool {
+    width: 38px;
+    height: 38px;
+  }
 }
 
 /* ==========================================
@@ -1546,8 +1847,13 @@ body {
 }
 
 @keyframes overlayFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .sure-modal {
@@ -1563,8 +1869,15 @@ body {
 }
 
 @keyframes modalPop {
-  0%   { transform: scale(0.7) translateY(30px); opacity: 0; }
-  100% { transform: scale(1)   translateY(0);    opacity: 1; }
+  0% {
+    transform: scale(0.7) translateY(30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }
 
 .sure-gif-wrap {
@@ -1605,7 +1918,8 @@ body {
   flex-wrap: wrap;
 }
 
-.sure-yes, .sure-no {
+.sure-yes,
+.sure-no {
   padding: 12px 20px;
   font-size: 0.9rem;
   border-radius: 50px;
